@@ -66,6 +66,7 @@ def main():
     # start multiprocess
     fullDatasToInsert = p.map(get_dataToInsert, multiThreadingProcessList)
 
+    # githubtest
 
     wr.writerows(fullDatasToInsert)
 

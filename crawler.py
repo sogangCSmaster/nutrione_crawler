@@ -35,7 +35,7 @@ def keyword_and_price(data):
     meta = soup.find('meta', {'name': 'keywords'})
     contextualKeywords = meta['content']
 
-    data['memberPrice'] = memberPrice
+    data['memberPrice'] = memberPrice + ' KRW'
     data['contextualKeywords'] = contextualKeywords
 
     return data

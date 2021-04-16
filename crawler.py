@@ -4,8 +4,9 @@ from helper import nutrioneGMC, memberPriceXpath
 import requests
 import json
 
-def product_list():
-    result = []
+def product_data():
+    productData = {}
+    productList = []
     response = requests.get(nutrioneGMC)
     response = response.text
     rows = response.split('\r\n')
@@ -20,9 +21,12 @@ def product_list():
             for i in range(0, len(fields)):
                 if len(datas) > 1:
                     temp[fields[i]] = datas[i]
-            result.append(temp)
+            productList.append(temp)
 
-    return result
+    productData['productList'] = productList
+    productData['fields'] = fields
+
+    return productData
 
 def keyword_and_price(data):
     link = data['link']

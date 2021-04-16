@@ -11,7 +11,7 @@ def get_dataToInsert(data):
     for field in fields:
         if field in fieldsToFeedFormatter:
             dataToInsert.append(fullData[field])
-
+ 
     print(dataToInsert)
     return dataToInsert
 
@@ -56,7 +56,7 @@ def main():
     """
     multiprocessing
     """
-    p = Pool(6)
+    p = Pool(12)
     multiThreadingProcessList = []
     for product in productList:
         # check for deadlocks

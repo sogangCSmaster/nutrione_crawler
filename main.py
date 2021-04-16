@@ -9,7 +9,7 @@ def main():
     
     fields = fields + ['memberPrice', 'contextualKeywords']
 
-    f = open('write.csv','w')
+    f = open('feed.csv','w', encoding='utf-8-sig')
     wr = csv.writer(f)
     fieldsToFeed = []
 
@@ -21,12 +21,19 @@ def main():
         
     wr.writerow(fieldsToFeed)
 
+    fullDatasToInsert = []
     for product in productList:
         fullData = keyword_and_price(product)
         dataToInsert = []
         for field in fields:
-            dataToInsert.append(fullData[field])
-        wr.writerow(dataToInsert)
+            if field in fieldsToFeedFormatter:
+                print(fullData[field])
+                dataToInsert.append(fullData[field])
+        
+        fullDatasToInsert.append(dataToInsert)
+        break
+
+    wr.writerows(fullDatasToInsert)
 
 
 if __name__ == '__main__':
